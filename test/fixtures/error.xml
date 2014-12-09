@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<body copyright="All data copyright MBTA 2010.">
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright agencies listed below and NextBus Inc 2014.">
 <Error shouldRetry="false">
-  Exception occurred in XMLFeed, status=[command=vehicleLocations,agency=mbta] message: For input string: ""
+  agency parameter "a" must be specified in query string
 </Error>
 </body>
