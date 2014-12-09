@@ -23,15 +23,15 @@ class TestClient < Test::Unit::TestCase
   end
 
   def test_routes
-    route_title1 = '39'
-    route_title2 = '111'
+    route_title1 = '1S-Yonge Subway Shuttle'
+    route_title2 = '5-Avenue Rd'
     agency_id    = 'abc'
     expect_response('route_list.xml', /#{agency_id}/, Net::HTTP::Get)
     routes = @client.routes(agency_id)
     assert routes.is_a?(Array)
     assert routes.detect{|route| route.title == route_title1 }
     assert routes.detect{|route| route.title == route_title2 }
-    assert_equal 2, routes.length
+    assert_equal 179, routes.length
   end
 
   def test_route

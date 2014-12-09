@@ -26,13 +26,13 @@ class TestRoute < Test::Unit::TestCase
   end
 
   def test_all
-    route_title1 = '39'
-    route_title2 = '111'
+    route_title1 = '1S-Yonge Subway Shuttle'
+    route_title2 = '5-Avenue Rd'
     agency_id    = 'abc'
     expect_response('route_list.xml', /#{agency_id}/, Net::HTTP::Get)
     all = Nextbus::Route.all(agency_id)
     assert all.is_a?(Array)
-    assert_equal 2, all.length
+    assert_equal 179, all.length
     assert all[0].is_a?(Nextbus::Route)
     assert_equal route_title1, all[0].title
     assert_equal route_title2, all[1].title
