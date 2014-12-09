@@ -27,8 +27,8 @@ module Nextbus
       response.route
     end
 
-    def predictions(agency_id, route_id, stop_id)
-      response = self.class.do_request("predictions", {"a" => agency_id, "r" => route_id, "s" => stop_id})
+    def predictions(agency_id, route_id, stop_tag)
+      response = self.class.do_request("predictions", {"a" => agency_id, "r" => route_id, "s" => stop_tag})
       response.predictions.direction.prediction
     end
 
