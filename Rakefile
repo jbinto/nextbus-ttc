@@ -5,15 +5,15 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "nextbus"
-    gem.summary = %Q{NextBus API client}
-    gem.description = %Q{NextBus API client}
-    gem.email = "gsterndale@gmail.com"
+    gem.summary = %Q{NextBus API client for TTC}
+    gem.description = %Q{NextBus API client for TTC}
+    gem.email = "hello@jessebuchanan.ca"
     gem.homepage = "http://github.com/neweryankee/nextbus"
-    gem.authors = ["Greg Sterndale"]
+    gem.authors = ["Jesse Buchanan", "Greg Sterndale"]
     gem.add_dependency "httparty", "= 0.5.2"
     gem.add_dependency "hashie", "= 0.1.8"
     gem.add_development_dependency "mocha", ">= 0.9.7"
-    gem.add_development_dependency "ruby-debug", ">= 0.10.3"
+    #gem.add_development_dependency "ruby-debug", ">= 0.10.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -41,16 +41,16 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
+#task :test => :check_dependencies
 
 task :default => :test
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+# require 'rake/rdoctask'
+# Rake::RDocTask.new do |rdoc|
+#   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "nextbus #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+#   rdoc.rdoc_dir = 'rdoc'
+#   rdoc.title = "nextbus #{version}"
+#   rdoc.rdoc_files.include('README*')
+#   rdoc.rdoc_files.include('lib/**/*.rb')
+# end

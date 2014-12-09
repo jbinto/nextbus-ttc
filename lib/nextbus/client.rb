@@ -50,6 +50,9 @@ module Nextbus
   protected
 
     def self.do_request(resource, params)  
+      # require 'byebug'
+      # byebug
+
       uri = build_uri(resource, params)
       response = get(uri)
       mash_response_body(response)

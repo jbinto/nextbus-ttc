@@ -9,9 +9,9 @@ rescue LoadError
 end
 
 require 'test/unit'
-require 'mocha'
+require 'mocha/test_unit'
+require 'stub_chain_mocha'
 require 'erb'
-require 'ruby-debug'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
@@ -21,10 +21,23 @@ require 'nextbus'
 class Test::Unit::TestCase
 
   def setup
+    # Note: This code is really old. The correct/modern way is to change everything to use RSpec, and use
+    # HTTParty's built-in `stub_http_response_with` spec helper:
+    # https://github.com/jnunemaker/httparty/blob/5dd1807e7b816f024b351a751de3cc726e142751/spec/support/stub_response.rb#L3
+    #
+    # I just want to get the tests to run for now, so I've left it alone.
+    #
+    # Originally, this code stubbed out `perform_actual_request`, but that's been deprecated since 2011.
+    # https://github.com/jnunemaker/httparty/commit/e9f8739b631eef58acedbd1e7678be1c28c16fbf
+    #
+    # Instead, stub out the `http.request` method chain. (Which is also a challenge, since Mocha doesn't
+    # support `stub_chain`)
+
+
     response = Net::HTTPOK.new("1.1", 200, "Content for you")
     response.stubs(:body).returns("")
     http_request = HTTParty::Request.new(Net::HTTP::Get, 'http://localhost', :format => :xml)
-    http_request.stubs(:perform_actual_request).returns(response)
+    http_request.stub_chain(:http, :request).returns(response)
     HTTParty::Request.stubs(:new).returns(http_request)
   end
 
@@ -40,7 +53,9 @@ class Test::Unit::TestCase
     response.stubs(:body).returns(data)
 
     http_request = HTTParty::Request.new(Net::HTTP::Get, 'http://localhost', :format => format)
-    http_request.stubs(:perform_actual_request).returns(response)
+
+    # https://github.com/jnunemaker/httparty/commit/e9f8739b631eef58acedbd1e7678be1c28c16fbf
+    http_request.stub_chain(:http, :request).returns(response)
 
     HTTParty::Request.expects(:new).with{|*args| (path.nil? || args[1] =~ path) && (method.nil? || args.first == method) }.returns(http_request)
   end
