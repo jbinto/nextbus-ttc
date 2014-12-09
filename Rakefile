@@ -22,9 +22,6 @@ Jeweler::Tasks.new do |gem|
   gem.email = "hello@jessebuchanan.ca"
   gem.authors = ["Jesse Buchanan", "Greg Sterndale"]
   # dependencies defined in Gemfile
-  gem.add_dependency "httparty", "= 0.13.3"
-  gem.add_dependency "hashie", "= 3.3.2"
-  gem.add_development_dependency "mocha", "= 1.1.0"
 end
 Jeweler::RubygemsDotOrgTasks.new
 

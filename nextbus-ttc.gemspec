@@ -113,9 +113,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<pry-byebug>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_runtime_dependency(%q<httparty>, ["= 0.13.3"])
-      s.add_runtime_dependency(%q<hashie>, ["= 3.3.2"])
-      s.add_development_dependency(%q<mocha>, ["= 1.1.0"])
     else
       s.add_dependency(%q<httparty>, [">= 0"])
       s.add_dependency(%q<hashie>, [">= 0"])
@@ -123,9 +120,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<pry-byebug>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<httparty>, ["= 0.13.3"])
-      s.add_dependency(%q<hashie>, ["= 3.3.2"])
-      s.add_dependency(%q<mocha>, ["= 1.1.0"])
     end
   else
     s.add_dependency(%q<httparty>, [">= 0"])
@@ -134,9 +128,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<pry-byebug>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<httparty>, ["= 0.13.3"])
-    s.add_dependency(%q<hashie>, ["= 3.3.2"])
-    s.add_dependency(%q<mocha>, ["= 1.1.0"])
   end
 end
 
