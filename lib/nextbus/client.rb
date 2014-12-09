@@ -44,15 +44,20 @@ module Nextbus
 
     def stops(agency_id, route_id, direction_id)
       response = self.class.do_request("routeConfig", {"a" => agency_id, "r" => route_id})
-      response.route.direction.detect{|direction| direction.tag == direction_id }.stop
+      # TODO: Please refactor me.
+      # The <stop> tags inside <direction> are normalized and contain only the `tag` attribute.
+      stops_filtered = response.route.direction.detect{|direction| direction.tag == direction_id }.stop
+      stops_detailed = stops_filtered.map do |sparse|
+        # Use the list of <stop>s at the top of the XML, which have the full detail (title, lat, lng, stopId, etc)
+        response.route.stop.find { |detailed| sparse.tag == detailed.tag }
+      end
+
+      stops_detailed
     end
 
   protected
 
     def self.do_request(resource, params)  
-      # require 'byebug'
-      # byebug
-
       uri = build_uri(resource, params)
       response = get(uri)
       mash_response_body(response)

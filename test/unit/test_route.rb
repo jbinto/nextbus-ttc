@@ -39,9 +39,9 @@ class TestRoute < Test::Unit::TestCase
   end
 
   def test_find
-    route_title = '39'
-    agency_id   = 'abc'
-    route_id    = '123'
+    route_title = '504-King'
+    agency_id   = 'ttc'
+    route_id    = '504'
     expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
     route = Nextbus::Route.find(agency_id, route_id)
     assert route.is_a?(Nextbus::Route)

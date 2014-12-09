@@ -25,7 +25,7 @@ class TestClient < Test::Unit::TestCase
   def test_routes
     route_title1 = '1S-Yonge Subway Shuttle'
     route_title2 = '5-Avenue Rd'
-    agency_id    = 'abc'
+    agency_id    = 'ttc'
     expect_response('route_list.xml', /#{agency_id}/, Net::HTTP::Get)
     routes = @client.routes(agency_id)
     assert routes.is_a?(Array)
@@ -35,11 +35,11 @@ class TestClient < Test::Unit::TestCase
   end
 
   def test_route
-    route_title = '39'
-    stop_tag1   = '8750'
-    stop_tag2   = '1935'
-    agency_id   = 'abc'
-    route_id    = '123'
+    route_title = '504-King'
+    stop_tag1   = '14186'
+    stop_tag2   = '1115'
+    agency_id   = 'ttc'
+    route_id    = '504'
     expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
     route = @client.route(agency_id, route_id)
     assert route.is_a?(Hashie::Mash)
@@ -78,8 +78,8 @@ class TestClient < Test::Unit::TestCase
   end
 
   def test_directions
-    direction_title1 = 'Outbound'
-    direction_title2 = 'Inbound'
+    direction_title1 = 'West - 504 King towards Dundas West Station via King'
+    direction_title2 = 'East - 504 King towards Broadview Station via King'
     agency_id        = 'abc'
     route_id         = '123'
     expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
@@ -87,21 +87,22 @@ class TestClient < Test::Unit::TestCase
     assert directions.is_a?(Array)
     assert_equal direction_title1, directions[0].title
     assert_equal direction_title2, directions[1].title
-    assert_equal 2, directions.length
+    assert_equal 3, directions.length
   end
 
   def test_stops
-    stop_tag1     = '23391'
-    stop_tag2     = '173'
-    agency_id     = 'abc'
-    route_id      = '123'
-    direction_id  = 'out'
+    # FIXME BOSTON TORONTO
+    stop_tag1     = '14186'
+    stop_tag2     = '1115'
+    agency_id     = 'ttc'
+    route_id      = '504'
+    direction_id  = '504_0_504Sun'
     expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
     stops = @client.stops(agency_id, route_id, direction_id)
     assert stops.is_a?(Array)
     assert_equal stop_tag1, stops[0].tag
     assert_equal stop_tag2, stops[1].tag
-    assert_equal 32, stops.length
+    assert_equal 58, stops.length
   end
 
 end

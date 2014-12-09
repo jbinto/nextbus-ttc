@@ -18,8 +18,8 @@ class TestStop < Test::Unit::TestCase
   def test_region_lon_attr
     assert_attr_accessor @stop1, :lon
   end
-  def test_region_id_attr
-    assert_attr_accessor @stop1, :id
+  def test_region_stop_id_attr
+    assert_attr_accessor @stop1, :stop_id
   end
 
   def test_direction_attr
@@ -30,35 +30,35 @@ class TestStop < Test::Unit::TestCase
   end
 
   def test_instantiated_with_attrs
-    attrs = {:tag => 'my tag', :title => 'my title', :lat => 'my lat', :lon => 'my lon', :id => 'my id'}
+    attrs = {:tag => 'my tag', :title => 'my title', :lat => 'my lat', :lon => 'my lon', :stop_id => 'my stop id'}
     assert_instantiated_with_attrs Nextbus::Stop, attrs
   end
 
   def test_all
-    stop_tag1     = '23391'
-    stop_tag2     = '173'
-    agency_id     = 'abc'
-    route_id      = '321'
-    direction_id  = 'out'
+    stop_tag1     = '14161'
+    stop_tag2     = '4402'
+    agency_id     = 'ttc'
+    route_id      = '504'
+    direction_id  = '504_1_504'
     expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
     all = Nextbus::Stop.all(agency_id, route_id, direction_id)
     assert all.is_a?(Array)
-    assert_equal 32, all.length
+    assert_equal 58, all.length
     assert all[0].is_a?(Nextbus::Stop)
     assert_equal stop_tag1, all[0].tag
     assert_equal stop_tag2, all[1].tag
   end
 
   def test_find
-    stop_tag      = '23391'
-    agency_id     = 'abc'
-    route_id      = '321'
-    direction_id  = 'out'
-    stop_id       = '23391'
+    stop_tag      = '14161'
+    agency_id     = 'ttc'
+    route_id      = '504'
+    direction_id  = '504_1_504'
+    stop_id       = '14639'     # n.b. in Toronto, stop_tag != stop_id
     expect_response('route_config.xml', /#{agency_id}.+#{route_id}/, Net::HTTP::Get)
-    stop = Nextbus::Stop.find(agency_id, route_id, direction_id, stop_id)
+    stop = Nextbus::Stop.find(agency_id, route_id, direction_id, stop_tag)
     assert stop.is_a?(Nextbus::Stop)
-    assert_equal stop_tag, stop.tag
+    assert_equal stop_id, stop.stop_id
   end
 
 end
