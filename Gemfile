@@ -8,5 +8,5 @@ gem "mocha" #, "0.9.8"
 group :development do
   gem "rake"
   gem "byebug"
-  
+  gem "jeweler"
 end
