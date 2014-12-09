@@ -16,13 +16,15 @@ Gem::Specification.new do |s|
   s.email = "hello@jessebuchanan.ca"
   s.extra_rdoc_files = [
     "LICENSE",
-    "README.markdown"
+    "README.md",
+    "README.original.md"
   ]
   s.files = [
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
-    "README.markdown",
+    "README.md",
+    "README.original.md",
     "Rakefile",
     "VERSION",
     "doc/ERM.graffle",
@@ -40,7 +42,7 @@ Gem::Specification.new do |s|
     "lib/nextbus/stop.rb",
     "lib/nextbus/string_extensions.rb",
     "lib/nextbus/vehicle.rb",
-    "nextbus.gemspec",
+    "nextbus-ttc.gemspec",
     "test/fixtures/agency_list.xml",
     "test/fixtures/error.xml",
     "test/fixtures/predictions.xml",
@@ -63,17 +65,38 @@ Gem::Specification.new do |s|
     "test/unit/test_stop.rb",
     "test/unit/test_string_extensions.rb",
     "test/unit/test_vehicle.rb",
+    "vendor/cache/addressable-2.3.6.gem",
+    "vendor/cache/builder-3.2.2.gem",
     "vendor/cache/byebug-3.5.1.gem",
+    "vendor/cache/coderay-1.1.0.gem",
     "vendor/cache/columnize-0.9.0.gem",
     "vendor/cache/debugger-linecache-1.2.0.gem",
+    "vendor/cache/descendants_tracker-0.0.4.gem",
+    "vendor/cache/faraday-0.9.0.gem",
+    "vendor/cache/git-1.2.8.gem",
+    "vendor/cache/github_api-0.12.2.gem",
     "vendor/cache/hashie-3.3.2.gem",
+    "vendor/cache/highline-1.6.21.gem",
     "vendor/cache/httparty-0.13.3.gem",
+    "vendor/cache/jeweler-2.0.1.gem",
     "vendor/cache/json-1.8.1.gem",
+    "vendor/cache/jwt-1.2.0.gem",
     "vendor/cache/metaclass-0.0.4.gem",
+    "vendor/cache/method_source-0.8.2.gem",
+    "vendor/cache/mini_portile-0.6.1.gem",
     "vendor/cache/mocha-1.1.0.gem",
+    "vendor/cache/multi_json-1.10.1.gem",
     "vendor/cache/multi_xml-0.5.5.gem",
+    "vendor/cache/multipart-post-2.0.0.gem",
+    "vendor/cache/nokogiri-1.6.5.gem",
+    "vendor/cache/oauth2-1.0.0.gem",
+    "vendor/cache/pry-0.10.1.gem",
+    "vendor/cache/pry-byebug-2.0.0.gem",
+    "vendor/cache/rack-1.5.2.gem",
     "vendor/cache/rake-10.4.2.gem",
-    "vendor/cache/slop-3.6.0.gem"
+    "vendor/cache/rdoc-4.1.2.gem",
+    "vendor/cache/slop-3.6.0.gem",
+    "vendor/cache/thread_safe-0.3.4.gem"
   ]
   s.homepage = "http://github.com/jbinto/nextbus-ttc"
   s.licenses = ["MIT"]
@@ -88,20 +111,20 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<hashie>, [">= 0"])
       s.add_runtime_dependency(%q<mocha>, [">= 0"])
       s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_development_dependency(%q<byebug>, [">= 0"])
+      s.add_development_dependency(%q<pry-byebug>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_runtime_dependency(%q<httparty>, ["= 0.13.3"])
-      s.add_runtime_dependency(%q<hashie>, ["= 0.5.2"])
+      s.add_runtime_dependency(%q<hashie>, ["= 3.3.2"])
       s.add_development_dependency(%q<mocha>, ["= 1.1.0"])
     else
       s.add_dependency(%q<httparty>, [">= 0"])
       s.add_dependency(%q<hashie>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<byebug>, [">= 0"])
+      s.add_dependency(%q<pry-byebug>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<httparty>, ["= 0.13.3"])
-      s.add_dependency(%q<hashie>, ["= 0.5.2"])
+      s.add_dependency(%q<hashie>, ["= 3.3.2"])
       s.add_dependency(%q<mocha>, ["= 1.1.0"])
     end
   else
@@ -109,10 +132,10 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<hashie>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0"])
     s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<byebug>, [">= 0"])
+    s.add_dependency(%q<pry-byebug>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<httparty>, ["= 0.13.3"])
-    s.add_dependency(%q<hashie>, ["= 0.5.2"])
+    s.add_dependency(%q<hashie>, ["= 3.3.2"])
     s.add_dependency(%q<mocha>, ["= 1.1.0"])
   end
 end
