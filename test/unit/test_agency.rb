@@ -33,21 +33,21 @@ class TestAgency < Test::Unit::TestCase
   end
 
   def test_all
-    agency_title1 = 'MBTA'
-    agency_title2 = 'San Francisco Muni'
+    agency_title1 = 'AC Transit'
+    agency_title2 = 'APL'
     expect_response('agency_list.xml', nil, Net::HTTP::Get)
     all = Nextbus::Agency.all
     assert all.is_a?(Array)
-    assert_equal 2, all.length
+    assert_equal 65, all.length
     assert all[0].is_a?(Nextbus::Agency)
     assert_equal agency_title1, all[0].title
     assert_equal agency_title2, all[1].title
   end
 
   def test_find
-    agency_title = 'MBTA'
+    agency_title = 'Toronto Transit Commission'
     expect_response('agency_list.xml', nil, Net::HTTP::Get)
-    agency_id = 'mbta'
+    agency_id = 'ttc'
     agency = Nextbus::Agency.find(agency_id)
     assert agency.is_a?(Nextbus::Agency)
     assert_equal agency_title, agency.title

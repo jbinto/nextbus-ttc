@@ -12,14 +12,14 @@ class TestClient < Test::Unit::TestCase
   end
 
   def test_agencies
-    agency_title1 = 'MBTA'
-    agency_title2 = 'San Francisco Muni'
+    agency_title1 = 'AC Transit'
+    agency_title2 = 'APL'
     expect_response('agency_list.xml', nil, Net::HTTP::Get)
     agencies = @client.agencies
     assert agencies.is_a?(Array)
     assert agencies.detect{|agency| agency.title == agency_title1 }
     assert agencies.detect{|agency| agency.title == agency_title2 }
-    assert_equal 2, agencies.length
+    assert_equal 65, agencies.length
   end
 
   def test_routes
