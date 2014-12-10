@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<body copyright="All data copyright MBTA 2010.">
-<predictions agencyTitle="MBTA" routeTitle="39" routeTag="39" stopTitle="105 S Huntington (Stop 22365)">
-  <direction title="Outbound">
-    <prediction seconds="745" minutes="12" epochTime="1266681828070" isDeparture="false" dirTag="out" vehicle="1041" block="S393_6"/>
-    <prediction seconds="1299" minutes="21" epochTime="1266681828075" isDeparture="false" dirTag="out" vehicle="1022" block="S393_7"/>
-    <prediction seconds="1929" minutes="32" epochTime="1266683011947" isDeparture="false" dirTag="out" vehicle="1027" block="S393_1"/>
-    <prediction seconds="2529" minutes="42" epochTime="1266683611947" isDeparture="false" dirTag="out" vehicle="1040" block="S393_2"/>
-    <prediction seconds="3129" minutes="52" epochTime="1266684211947" isDeparture="false" dirTag="out" vehicle="1037" block="S393_8"/>
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright Toronto Transit Commission 2014.">
+<predictions agencyTitle="Toronto Transit Commission" routeTitle="504-King" routeTag="504" stopTitle="Queen St East At River St" stopTag="10272">
+  <direction title="West - 504 King Replacement Bus towards Roncesvalles and Queen">
+  <prediction epochTime="1418168810253" seconds="187" minutes="3" isDeparture="false" branch="504" dirTag="504_1_504BUS" vehicle="7704" block="504_83_582" tripTag="25116052" />
+  </direction>
+  <direction title="West - 504 King Replacement Bus towards Dundas West Station via King">
+  <prediction epochTime="1418170640345" seconds="2017" minutes="33" isDeparture="false" affectedByLayover="true" branch="504" dirTag="504_1_504BUSdw" vehicle="1654" block="504_76_512" tripTag="25116043" />
+  </direction>
+  <direction title="West - 504 King towards Dundas West Station via King">
+  <prediction epochTime="1418168727393" seconds="104" minutes="1" isDeparture="false" branch="504" dirTag="504_1_504" vehicle="4183" block="504_22_220" tripTag="25115971" />
+  <prediction epochTime="1418169094161" seconds="470" minutes="7" isDeparture="false" branch="504" dirTag="504_1_504" vehicle="4101" block="504_18_180" tripTag="25115965" />
+  <prediction epochTime="1418169269296" seconds="646" minutes="10" isDeparture="false" branch="504" dirTag="504_1_504" vehicle="4012" block="504_26_260" tripTag="25115975" />
+  <prediction epochTime="1418169376746" seconds="753" minutes="12" isDeparture="false" affectedByLayover="true" branch="504" dirTag="504_1_504" vehicle="4038" block="504_30_300" tripTag="25115980" />
+  <prediction epochTime="1418169789699" seconds="1166" minutes="19" isDeparture="false" affectedByLayover="true" branch="504" dirTag="504_1_504" vehicle="4220" block="504_31_22" tripTag="25115982" />
   </direction>
 </predictions>
 </body>

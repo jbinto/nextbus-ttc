@@ -30,13 +30,13 @@ class TestPrediction < Test::Unit::TestCase
   end
 
   def test_all
-    prediction_time1  = Time.at(1266681828.070)
-    prediction_time2  = Time.at(1266681828.075)
-    agency_id         = 'abc'
-    route_id          = '321'
-    stop_id           = '22365'
-    expect_response('predictions.xml', /#{agency_id}.+#{route_id}.+#{stop_id}/, Net::HTTP::Get)
-    all = Nextbus::Prediction.all(agency_id, route_id, stop_id)
+    prediction_time1  = Time.at(1418168727.393)
+    prediction_time2  = Time.at(1418169094.161)
+    agency_id         = 'ttc'
+    route_id          = '504'
+    stop_tag          = '22365'
+    expect_response('predictions.xml', /#{agency_id}.+#{route_id}.+#{stop_tag}/, Net::HTTP::Get)
+    all = Nextbus::Prediction.all(agency_id, route_id, stop_tag)
     assert all.is_a?(Array)
     assert_equal 5, all.length
     assert all[0].is_a?(Nextbus::Prediction)

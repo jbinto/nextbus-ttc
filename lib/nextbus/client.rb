@@ -29,6 +29,8 @@ module Nextbus
 
     def predictions(agency_id, route_id, stop_tag)
       response = self.class.do_request("predictions", {"a" => agency_id, "r" => route_id, "s" => stop_tag})
+
+      require 'pry-byebug'; binding.pry      
       response.predictions.direction.prediction
     end
 
